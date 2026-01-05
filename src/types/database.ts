@@ -9,6 +9,8 @@ export interface Customer {
   city: string;
   postal_code: string;
   date_of_birth: string;
+  gender?: string;
+  cin?: string;
   policy_number?: string;
   policy_type?: string;
   policy_status?: 'active' | 'inactive' | 'pending';

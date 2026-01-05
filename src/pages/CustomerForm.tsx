@@ -26,6 +26,8 @@ export default function CustomerForm() {
     city: '',
     postal_code: '',
     date_of_birth: '',
+    gender: '',
+    cin: '',
     policy_number: '',
     policy_type: '',
     policy_status: 'pending' as 'active' | 'inactive' | 'pending',
@@ -159,14 +161,41 @@ export default function CustomerForm() {
                 </div>
               </div>
 
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="date_of_birth">Date de Naissance *</Label>
+                  <Input
+                    id="date_of_birth"
+                    type="date"
+                    value={formData.date_of_birth}
+                    onChange={(e) => handleChange('date_of_birth', e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="gender">Genre</Label>
+                  <Select
+                    value={formData.gender}
+                    onValueChange={(value) => handleChange('gender', value)}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Sélectionner" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="homme">Homme</SelectItem>
+                      <SelectItem value="femme">Femme</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
               <div className="space-y-2">
-                <Label htmlFor="date_of_birth">Date de Naissance *</Label>
+                <Label htmlFor="cin">CIN</Label>
                 <Input
-                  id="date_of_birth"
-                  type="date"
-                  value={formData.date_of_birth}
-                  onChange={(e) => handleChange('date_of_birth', e.target.value)}
-                  required
+                  id="cin"
+                  value={formData.cin}
+                  onChange={(e) => handleChange('cin', e.target.value)}
+                  placeholder="Numéro de carte d'identité nationale"
                 />
               </div>
 
