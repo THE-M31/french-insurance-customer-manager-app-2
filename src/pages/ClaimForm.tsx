@@ -239,7 +239,7 @@ export default function ClaimForm() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="estimated_amount">Montant Estimé (€)</Label>
+                <Label htmlFor="estimated_amount">Montant Estimé (DZD)</Label>
                 <Input
                   id="estimated_amount"
                   type="number"
@@ -250,6 +250,7 @@ export default function ClaimForm() {
                   }
                   placeholder="0.00"
                 />
+                <p className="text-xs text-muted-foreground">Montant hors taxe (HT)</p>
               </div>
 
               <div className="space-y-2">

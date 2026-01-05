@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
+import { formatDZD } from '@/lib/currency';
 import { Plus, Search, FileText, Clock, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 import {
   Table,
@@ -81,10 +82,7 @@ export default function ClaimsPage() {
 
   const formatCurrency = (amount?: number) => {
     if (!amount) return '-';
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR',
-    }).format(amount);
+    return formatDZD(amount);
   };
 
   const formatDate = (date: string) => {
@@ -151,7 +149,7 @@ export default function ClaimsPage() {
                   <TableHead>Client</TableHead>
                   <TableHead>Type</TableHead>
                   <TableHead>Date Incident</TableHead>
-                  <TableHead>Montant Estimé</TableHead>
+                  <TableHead>Montant Estimé (DZD)</TableHead>
                   <TableHead>Statut</TableHead>
                   <TableHead>Actions</TableHead>
                 </TableRow>
