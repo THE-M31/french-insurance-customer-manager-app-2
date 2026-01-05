@@ -43,7 +43,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => subscription.unsubscribe();
   }, []);
 
-  const fetchUserProfile = async (userId: string) => {
+  const fetchUserProfile = async (userId: string, retries = 3) => {
     try {
       const { data, error } = await supabase
         .from('users')
@@ -51,7 +51,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         .eq('id', userId)
         .single();
 
-      if (error) throw error;
+      if (error) {
+        // If user profile doesn't exist yet, retry after a short delay
+        if (retries > 0 && error.code === 'PGRST116') {
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          return fetchUserProfile(userId, retries - 1);
+        }
+        throw error;
+      }
 
       setUser(data);
       const { data: sessionData } = await supabase.auth.getSession();
@@ -63,6 +70,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
     } catch (error) {
       console.error('Error fetching user profile:', error);
+      // Still set loading to false even on error
     } finally {
       setLoading(false);
     }
@@ -77,7 +85,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signUp = async (email: string, password: string, fullName: string) => {
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -88,6 +96,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       },
     });
     if (error) throw error;
+    
+    // Wait a moment for the trigger to create the user profile
+    await new Promise(resolve => setTimeout(resolve, 1500));
     
     // Auto sign in after signup
     await signIn(email, password);
