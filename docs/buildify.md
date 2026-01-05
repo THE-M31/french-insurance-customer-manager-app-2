@@ -17,5 +17,6 @@
 - [x] Create authentication system
 - [x] Build customer management interface
 - [x] Add claims management system
+- [x] Add Algerian Dinar pricing with tax and TVA
 - [ ] Add French translations
 - [ ] Configure environment variables

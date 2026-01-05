@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
+import { calculatePriceWithTVA, formatDZD, formatPriceBreakdown } from '@/lib/currency';
 import {
   ArrowLeft,
   Edit,
@@ -100,10 +101,7 @@ export default function ClaimDetail() {
 
   const formatCurrency = (amount?: number) => {
     if (!amount) return '-';
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR',
-    }).format(amount);
+    return formatDZD(amount);
   };
 
   const formatDate = (date: string) => {
@@ -208,6 +206,36 @@ export default function ClaimDetail() {
           </CardContent>
         </Card>
       </div>
+
+      {claim.estimated_amount && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Détails du Prix (DZD)</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {(() => {
+              const breakdown = calculatePriceWithTVA(claim.estimated_amount);
+              const formatted = formatPriceBreakdown(breakdown);
+              return (
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-muted-foreground">Montant HT (Hors Taxe)</span>
+                    <span className="text-lg font-semibold text-foreground">{formatted.subtotal}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-muted-foreground">TVA (19%)</span>
+                    <span className="text-lg font-semibold text-foreground">{formatted.tva}</span>
+                  </div>
+                  <div className="border-t pt-3 flex justify-between items-center">
+                    <span className="text-base font-medium text-foreground">Total TTC (Toutes Taxes Comprises)</span>
+                    <span className="text-2xl font-bold text-primary">{formatted.total}</span>
+                  </div>
+                </div>
+              );
+            })()}
+          </CardContent>
+        </Card>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card>
