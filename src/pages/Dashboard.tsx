@@ -72,7 +72,7 @@ export default function Dashboard() {
           <div className="flex items-center gap-4">
             <Logo className="h-12" />
             <div>
-              <h1 className="text-xl font-bold text-foreground">Gestion des Clients</h1>
+              <h1 className="text-xl font-bold text-foreground">Gestion des Clients et les sinistres</h1>
               <p className="text-sm text-muted-foreground">
                 Bienvenue, {user?.full_name}
               </p>
