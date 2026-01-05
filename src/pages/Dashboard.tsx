@@ -9,7 +9,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Badge } from '@/components/ui/badge';
 import { Plus, LogOut, Users, FileText, TrendingUp } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import logo from '@/assets/images.png';
+import Logo from '@/components/Logo';
 
 export default function Dashboard() {
   const { user, signOut } = useAuth();
@@ -60,7 +60,7 @@ export default function Dashboard() {
       <header className="border-b border-border bg-card">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <img src={logo} alt="SAA Assurances" className="h-12 object-contain" />
+            <Logo className="h-12" />
             <div>
               <h1 className="text-xl font-bold text-foreground">Gestion des Clients</h1>
               <p className="text-sm text-muted-foreground">

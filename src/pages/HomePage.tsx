@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, Users, FileText, BarChart } from 'lucide-react';
-import logo from '@/assets/images.png';
+import Logo from '@/components/Logo';
 
 export default function HomePage() {
   return (
@@ -13,7 +13,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1920&h=1080&fit=crop')] opacity-10 bg-cover bg-center" />
         <div className="relative container mx-auto px-4 py-20">
           <div className="flex flex-col items-center text-center">
-            <img src={logo} alt="SAA Assurances" className="h-24 mb-8" />
+            <Logo className="h-24 mb-8" />
             <h1 className="text-5xl font-bold text-primary-foreground mb-6">
               Gestion Client Simplifiée
             </h1>

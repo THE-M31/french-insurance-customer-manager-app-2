@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
-import logo from '@/assets/images.png';
+import Logo from '@/components/Logo';
 
 export function Header() {
   const { user, signOut } = useAuth();
@@ -11,7 +11,7 @@ export function Header() {
     <header className="border-b border-border bg-card">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="SAA Assurances" className="h-12" />
+          <Logo />
         </Link>
         
         {user && (

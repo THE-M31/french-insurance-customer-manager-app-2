@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import logo from '@/assets/images.png';
+import Logo from '@/components/Logo';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -44,7 +44,7 @@ export default function Login() {
       <Card className="w-full max-w-md shadow-xl">
         <CardHeader className="space-y-4 text-center">
           <div className="flex justify-center">
-            <img src={logo} alt="SAA Assurances" className="h-20 object-contain" />
+            <Logo className="h-20" />
           </div>
           <CardTitle className="text-2xl font-bold">Connexion</CardTitle>
           <CardDescription>

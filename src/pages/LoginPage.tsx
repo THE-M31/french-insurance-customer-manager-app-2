@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
-import logo from '@/assets/images.png';
+import Logo from '@/components/Logo';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -36,7 +36,7 @@ export default function LoginPage() {
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1554224311-beee460c201f?w=1920&h=1080&fit=crop')] opacity-10 bg-cover bg-center" />
       <Card className="w-full max-w-md relative z-10">
         <CardHeader className="text-center">
-          <img src={logo} alt="SAA Assurances" className="h-16 mx-auto mb-4" />
+          <Logo className="h-16 mx-auto mb-4" />
           <CardTitle className="text-2xl">Connexion</CardTitle>
           <CardDescription>
             Accédez à votre espace de gestion client
