@@ -17,6 +17,26 @@ export interface Customer {
   user_id: string;
 }
 
+export interface Claim {
+  id: string;
+  claim_number: string;
+  customer_id: string;
+  policy_number?: string;
+  claim_type: string;
+  incident_date: string;
+  reported_date: string;
+  status: 'pending' | 'in_progress' | 'approved' | 'rejected' | 'closed';
+  description: string;
+  estimated_amount?: number;
+  approved_amount?: number;
+  notes?: string;
+  assigned_to?: string;
+  created_at: string;
+  updated_at: string;
+  user_id: string;
+  customer?: Customer;
+}
+
 export interface User {
   id: string;
   email: string;

@@ -7,6 +7,9 @@ import Login from '@/pages/Login';
 import Dashboard from '@/pages/Dashboard';
 import CustomerForm from '@/pages/CustomerForm';
 import CustomerDetail from '@/pages/CustomerDetail';
+import ClaimsPage from '@/pages/ClaimsPage';
+import ClaimForm from '@/pages/ClaimForm';
+import ClaimDetail from '@/pages/ClaimDetail';
 
 function App() {
   return (
@@ -35,6 +38,38 @@ function App() {
             element={
               <ProtectedRoute>
                 <CustomerDetail />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/claims"
+            element={
+              <ProtectedRoute>
+                <ClaimsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/claims/new"
+            element={
+              <ProtectedRoute>
+                <ClaimForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/claims/:id"
+            element={
+              <ProtectedRoute>
+                <ClaimDetail />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/claims/:id/edit"
+            element={
+              <ProtectedRoute>
+                <ClaimForm />
               </ProtectedRoute>
             }
           />
