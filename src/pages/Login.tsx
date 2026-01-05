@@ -49,12 +49,9 @@ export default function Login() {
       await signUp(email, password, fullName);
       toast({
         title: 'Compte créé',
-        description: 'Votre compte a été créé avec succès. Vous pouvez maintenant vous connecter.',
+        description: 'Bienvenue sur SAA Assurances',
       });
-      // Reset form
-      setEmail('');
-      setPassword('');
-      setFullName('');
+      navigate('/dashboard');
     } catch (error: any) {
       toast({
         title: 'Erreur de création',
